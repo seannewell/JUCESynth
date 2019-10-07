@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="yVxlLt" name="JUCESynth" projectType="audioplug" jucerVersion="5.4.3"
-              pluginManufacturer="Swan Effects" pluginVSTCategory="kPlugCategSynth"
-              pluginVST3Category="Instrument" pluginCharacteristicsValue="pluginIsMidiEffectPlugin,pluginIsSynth,pluginWantsMidiIn"
-              pluginFormats="buildAU">
+              pluginManufacturer="Swan-Effects" pluginVSTCategory="kPlugCategSynth"
+              pluginVST3Category="Fx,Instrument" pluginCharacteristicsValue="pluginIsMidiEffectPlugin,pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
+              pluginFormats="buildAU" pluginAUMainType="'aufx'">
   <MAINGROUP id="z5Rzgl" name="JUCESynth">
     <GROUP id="{5B623FEE-4EBF-98E9-23E6-3C0DD0815879}" name="Source">
-      <FILE id="V0WB7E" name="PluginProcessor.cpp" compile="1" resource="0"
+      <FILE id="kJJqX9" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
+      <FILE id="VfmGnF" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
+      <FILE id="o6RXmJ" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
-      <FILE id="CdQnma" name="PluginProcessor.h" compile="0" resource="0"
+      <FILE id="Z8TN6k" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
       <FILE id="zna0XQ" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
@@ -18,7 +20,7 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="1" name="Debug" auBinaryLocation="/Library/Audio/Plug-Ins/Components"/>
         <CONFIGURATION isDebug="0" name="Release"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -38,28 +40,6 @@
         <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2017 targetFolder="Builds/VisualStudio2017">
-      <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_audio_basics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="../../JUCE/modules"/>
-      </MODULEPATHS>
-    </VS2017>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
