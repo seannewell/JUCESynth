@@ -17,42 +17,59 @@
 class SynthVoice : public SynthesiserVoice
 {
 public:
-    bool canPlaySound(Synthesiser* sound){
-        
+    bool canPlaySound(SynthesiserSound* sound) {
+        return dynamic_cast<SynthSound*>(sound) != nullptr;
     }
     
-    //==============================================================
+    //========================================================================
     
-    void startNote(int midiNoteNumber, float velocity, SynthesiserSound* sound,
-                   int currentPitchWheelPosition){
-        
+    void startNote(int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWeelPosition){
+        frequency = MidiMessage::getMidiNoteInHertz(midiNoteNumber);
+        level = velocity;
+        std::cout << midiNoteNumber << "-" << frequency << std::endl;
     }
-    //==============================================================
-
+    
+    //========================================================================
+    
     void stopNote(float velocity, bool allowTailOff){
         
+        level = 0;
+        clearCurrentNote();
+        
     }
-    //==============================================================
-
+    
+    //========================================================================
+    
     void pitchWheelMoved(int newPitchWheelValue){
         
     }
-    //==============================================================
+    
+    
+    //========================================================================
+    
     
     void controllerMoved(int controllerNumber, int newControllerValue){
         
     }
-    //==============================================================
+    
 
     void renderNextBlock(AudioBuffer<float> &outputBuffer, int startSample, int numSamples){
         
+
+        
+        for (int sample = 0; sample < numSamples; ++sample) {
+
+            for (int channel = 0; channel < outputBuffer.getNumChannels(); ++channel) {
+                outputBuffer.addSample(channel, startSample, 1); // '1' will be the output waveform
+            }
+            ++startSample;
+        }
     }
-    //==============================================================
+    
+    //========================================================================
     
 private:
-    
-    
-    
-    
+    double frequency;
+    double level;
     
 };
