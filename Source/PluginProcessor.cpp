@@ -21,6 +21,13 @@ JucesynthAudioProcessor::JucesynthAudioProcessor()
                        )
 #endif
 {
+    synth.clearVoices();
+    for(int i= 0; i < 5; i++){
+        synth.addVoice(new SynthVoice);
+    }
+    
+    synth.clearSounds();
+    synth.addSound(new SynthSound());
 }
 
 JucesynthAudioProcessor::~JucesynthAudioProcessor()
