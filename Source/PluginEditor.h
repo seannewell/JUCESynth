@@ -12,6 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
+#include "SynthLookAndFeel.h"
 
 //==============================================================================
 /**
@@ -29,6 +30,12 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
+    
+    SynthLookAndFeel laf;
+    ScopedPointer<Slider> slider1;
+    ScopedPointer<Slider> slider2;
+    ScopedPointer<Label> label1;
+    ScopedPointer<Drawable> drawable1;
     JucesynthAudioProcessor& processor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JucesynthAudioProcessorEditor)
